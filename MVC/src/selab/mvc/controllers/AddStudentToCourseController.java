@@ -8,9 +8,16 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class AddStudentToCourseController extends Controller {
+    ArrayList<Student> students;
+    ArrayList<course> courses;
+
 
     public AddStudentToCourseController(DataContext dataContext) {
+
         super(dataContext);
+        courses = dataContext.getCourses().getAll();
+        students = dataContext.getStudents().getAll();
+
     }
 
     @Override
@@ -23,7 +30,26 @@ public class AddStudentToCourseController extends Controller {
         String courseNo = input.getString("courseNo");
         String points = input.getString("points");
 
-        // TODO: Add required codes to associate the student with course
-        return null;
+        student st = null;
+        course C = null;
+        for (Course course : courses){
+            if (course.getCourseNo().equals(courseNo)){
+                C = course;
+                break;
+            }
+        }
+
+
+        for (Student student : students){
+            if (student.getStudentNo().equals(studentNo)){
+                st = student;
+                break;
+            }
+        }
+        st.addCourse(c, points);
+        C.addStudent(st,points );
+        Map<String, String> result = new HashMap<>();
+        result.put("success", "true");
+        return new JsonView(new JSONObject(result));
     }
 }

@@ -61,13 +61,20 @@ public class Course implements Model {
     }
 
     public float getAverage() {
-        // TODO: Calculate and return the average of the points
-        return 0;
+        int total = 0;
+        for (Float point : points){
+            total += point.floatValue();
+        }
+        return total/points.size();
     }
 
-    public String getStudents() {
-        // TODO: Return a comma separated list of student names
-        return "-";
+    public ArrayList<Student> getStudents() {
+            return this.students;
+    }
+
+    public void addStudent(student st, String pi){
+        this.studens.add(st);
+        this.points.add(Float.parseFloat(pi));
     }
 
     /**

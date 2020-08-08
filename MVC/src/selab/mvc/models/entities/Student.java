@@ -25,15 +25,21 @@ public class Student implements Model {
     public String getStudentNo() { return this.studentNo; }
 
     public float getAverage() {
-        // TODO: Calculate and return the average of the points
-        return 0;
+        int total = 0;
+        for (Float point : points){
+            total += point.floatValue();
+        }
+        return total/points.size();
     }
 
-    public String getCourses() {
-        // TODO: Return a comma separated list of course names
-        return "-";
+    public ArrayList<Course> getCourses() {
+        return this.courses;
     }
 
+    public addCourse(Course cu, String pi){
+        this.courses.add(c);
+        this.points.add(Float.parseFloat(pi));
+    }
     /**
      *
      * @param studentNo Student number to be checeked
