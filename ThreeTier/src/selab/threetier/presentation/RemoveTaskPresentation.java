@@ -23,8 +23,9 @@ public class RemoveTaskPresentation extends JSONPresentation {
         JSONObject request = new JSONObject(new BufferedReader(new InputStreamReader(body)).lines().collect(Collectors.joining("\n")));
 
         int id = request.getInt("id");
-
-        // TODO: Add codes here to delete a task with the id
-        return null;
+        Task.deleteById(id);
+        Map<String, String> message = new.HashMap<>();
+        message.put("`successful", "correct")
+        return new JSONObject(message);
     }
 }

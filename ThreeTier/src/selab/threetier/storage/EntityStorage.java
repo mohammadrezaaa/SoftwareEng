@@ -22,6 +22,9 @@ public class EntityStorage<T extends Entity> {
             list.put(id, item);
         return id;
     }
+    public void deleteEntity(int task_id){
+        list.remove(task_id);
+    }
 
     public ArrayList<T> getAll() {
         return new ArrayList<T>(list.values());
